@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kelas Kita</title>
+<title>XII TKR 3</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -12,150 +12,261 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:Poppins;
 }
 
 body{
-background: radial-gradient(circle at top,#1a1a1a,#0b0b0b);
+background:#0a0a0a;
 color:#fff;
-min-height:100vh;
-overflow-x:hidden;
+transition:.3s;
 }
 
-header{
+body.light{
+background:#f2f2f2;
+color:#111;
+}
+
+.hero{
+padding:70px 20px;
 text-align:center;
-padding:60px 20px 30px;
-animation:fadeDown 1s ease;
+background:linear-gradient(180deg,#161616,#0a0a0a);
 }
 
-header h1{
-font-size:34px;
-font-weight:600;
+body.light .hero{
+background:linear-gradient(180deg,#ffffff,#eaeaea);
 }
 
-header p{
-opacity:0.6;
-margin-top:8px;
+.hero h1{
+font-size:38px;
 }
 
-.container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:18px;
-padding:20px;
+.hero p{
+opacity:.6;
+margin-top:10px;
+}
+
+.toggle{
+position:fixed;
+top:15px;
+right:15px;
+padding:10px 14px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#222;
+color:#fff;
+}
+
+body.light .toggle{
+background:#ddd;
+color:#111;
+}
+
+.wrap{
 max-width:1000px;
 margin:auto;
+padding:20px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:-40px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:16px;
-overflow:hidden;
+background:#151515;
+padding:18px;
+border-radius:14px;
 text-align:center;
-transition:0.3s;
-opacity:0;
-transform:translateY(20px);
-animation:fadeUp 0.8s ease forwards;
+border:1px solid rgba(255,255,255,0.06);
+transition:.3s;
 }
 
-.card:nth-child(1){animation-delay:0.2s}
-.card:nth-child(2){animation-delay:0.4s}
-.card:nth-child(3){animation-delay:0.6s}
+body.light .card{
+background:#fff;
+border:1px solid #ddd;
+}
 
 .card:hover{
-transform:translateY(-8px) scale(1.03);
-box-shadow:0 0 20px rgba(255,255,255,0.15);
+transform:translateY(-5px);
 }
 
-.card img{
+.section{
+margin-top:35px;
+}
+
+h2{
+margin-bottom:10px;
+font-size:18px;
+}
+
+.teacher{
+padding:18px;
+border-radius:14px;
+background:#151515;
+border:1px solid rgba(255,255,255,0.06);
+}
+
+body.light .teacher{
+background:#fff;
+border:1px solid #ddd;
+}
+
+.search{
 width:100%;
-height:160px;
-object-fit:cover;
-transition:0.3s;
-}
-
-.card:hover img{
-transform:scale(1.1);
-filter:brightness(1.2);
-}
-
-.card h3{
+padding:12px;
+border-radius:10px;
+border:none;
 margin-top:10px;
-font-size:16px;
+background:#1c1c1c;
+color:#fff;
 }
 
-.card p{
-font-size:12px;
-opacity:0.6;
-padding-bottom:12px;
+body.light .search{
+background:#fff;
+color:#111;
+border:1px solid #ddd;
 }
 
-footer{
-text-align:center;
-padding:30px;
-opacity:0.4;
-font-size:12px;
-animation:fadeUp 1.2s ease;
+.list{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:10px;
+margin-top:15px;
 }
 
-@keyframes fadeUp{
-from{
+.item{
+padding:14px;
+border-radius:12px;
+background:#141414;
+cursor:pointer;
+transition:.2s;
 opacity:0;
 transform:translateY(30px);
 }
-to{
-opacity:1;
-transform:translateY(0);
-}
+
+body.light .item{
+background:#fff;
+border:1px solid #ddd;
 }
 
-@keyframes fadeDown{
-from{
-opacity:0;
-transform:translateY(-30px);
+.item:hover{
+transform:scale(1.05);
 }
-to{
+
+.reveal.active{
 opacity:1;
 transform:translateY(0);
+transition:.6s ease;
 }
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
 }
+
+.modal-box{
+background:#1a1a1a;
+padding:20px;
+border-radius:14px;
+width:250px;
+text-align:center;
+}
+
+body.light .modal-box{
+background:#fff;
+color:#111;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>Kelas XII TKR 3</h1>
-<p>kelas kita, santai aja</p>
-</header>
+<button class="toggle" onclick="toggleMode()">mode</button>
 
-<div class="container">
-
-<div class="card">
-<img src="https://i.pravatar.cc/300?img=1">
-<h3>Nama 1</h3>
-<p>anak kelas</p>
+<div class="hero">
+<h1>XII TKR 3</h1>
+<p>KELAS GACOR WOKKKKK</p>
 </div>
 
-<div class="card">
-<img src="https://i.pravatar.cc/300?img=2">
-<h3>Nama 2</h3>
-<p>anak kelas</p>
+<div class="wrap">
+
+<div class="stats">
+<div class="card reveal">Siswa<br><b>32</b></div>
+<div class="card reveal">Guru<br><b>5</b></div>
+<div class="card reveal">Prestasi<br><b>8</b></div>
 </div>
 
-<div class="card">
-<img src="https://i.pravatar.cc/300?img=3">
-<h3>Nama 3</h3>
-<p>anak kelas</p>
+<div class="section reveal">
+<h2>Wali Kelas</h2>
+<div class="teacher">Ibu Tessa</div>
+</div>
+
+<div class="section">
+<h2>Cari Siswa</h2>
+<input class="search" id="search" onkeyup="cari()" placeholder="ketik nama...">
+
+<div class="list">
+
+<div class="item reveal" onclick="openModal('Asep')">Asep</div>
+<div class="item reveal" onclick="openModal('Budi')">Budi</div>
+<div class="item reveal" onclick="openModal('Rizky')">Rizky</div>
+<div class="item reveal" onclick="openModal('Dimas')">Dimas</div>
+<div class="item reveal" onclick="openModal('Fajar')">Fajar</div>
+
+</div>
 </div>
 
 </div>
 
-<footer>
-kelas website simple
-</footer>
+<div class="modal" id="modal">
+<div class="modal-box">
+<p id="nama"></p>
+<br>
+<button onclick="closeModal()">close</button>
+</div>
+</div>
+
+<script>
+function cari(){
+let input=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".item").forEach(i=>{
+i.style.display=i.innerText.toLowerCase().includes(input)?"block":"none";
+});
+}
+
+function reveal(){
+document.querySelectorAll(".reveal").forEach(el=>{
+let top=el.getBoundingClientRect().top;
+if(top<window.innerHeight-80){
+el.classList.add("active");
+}
+});
+}
+
+window.addEventListener("scroll",reveal);
+reveal();
+
+function openModal(nama){
+document.getElementById("modal").style.display="flex";
+document.getElementById("nama").innerText=nama;
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function toggleMode(){
+document.body.classList.toggle("light");
+}
+</script>
 
 </body>
 </html>
