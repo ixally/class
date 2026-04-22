@@ -8,59 +8,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
 
 body{
 background:#0a0a0a;
 color:#fff;
-transition:.3s;
-}
-
-body.light{
-background:#f2f2f2;
-color:#111;
 }
 
 .hero{
-padding:70px 20px;
 text-align:center;
+padding:60px 20px;
 background:linear-gradient(180deg,#161616,#0a0a0a);
 }
 
-body.light .hero{
-background:linear-gradient(180deg,#ffffff,#eaeaea);
-}
-
-.hero h1{
-font-size:38px;
-}
-
-.hero p{
-opacity:.6;
-margin-top:10px;
-}
-
-.toggle{
-position:fixed;
-top:15px;
-right:15px;
-padding:10px 14px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-background:#222;
-color:#fff;
-}
-
-body.light .toggle{
-background:#ddd;
-color:#111;
-}
+.hero h1{font-size:36px}
+.hero p{opacity:.6;margin-top:8px}
 
 .wrap{
 max-width:1000px;
@@ -68,237 +30,155 @@ margin:auto;
 padding:20px;
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-top:-40px;
-}
-
-.card{
-background:#151515;
-padding:18px;
-border-radius:14px;
-text-align:center;
-border:1px solid rgba(255,255,255,0.06);
-transition:.3s;
-}
-
-body.light .card{
-background:#fff;
-border:1px solid #ddd;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.section{
-margin-top:35px;
-}
-
-h2{
-margin-bottom:10px;
-font-size:18px;
-}
-
-.teacher{
-padding:18px;
-border-radius:14px;
-background:#151515;
-border:1px solid rgba(255,255,255,0.06);
-}
-
-body.light .teacher{
-background:#fff;
-border:1px solid #ddd;
-}
-
 .search{
 width:100%;
 padding:12px;
 border-radius:10px;
 border:none;
-margin-top:10px;
+outline:none;
 background:#1c1c1c;
 color:#fff;
+margin-top:10px;
 }
 
-body.light .search{
-background:#fff;
-color:#111;
-border:1px solid #ddd;
-}
-
-.list{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:10px;
-margin-top:15px;
+grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+gap:15px;
+margin-top:20px;
 }
 
-.item{
-padding:14px;
-border-radius:12px;
-background:#141414;
+.profile{
+text-align:center;
 cursor:pointer;
 transition:.2s;
-opacity:0;
-transform:translateY(30px);
 }
 
-body.light .item{
-background:#fff;
-border:1px solid #ddd;
-}
-
-.item:hover{
-transform:scale(1.05);
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-transition:.6s ease;
-}
-
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
+.avatar{
+width:70px;
+height:70px;
+border-radius:50%;
+background:#222;
+display:flex;
 align-items:center;
+justify-content:center;
+margin:auto;
+font-weight:600;
+font-size:20px;
+border:1px solid rgba(255,255,255,0.08);
+overflow:hidden;
+transition:.2s;
 }
 
-.modal-box{
-background:#1a1a1a;
-padding:20px;
-border-radius:14px;
-width:250px;
-text-align:center;
+.profile:hover .avatar{
+transform:scale(1.1);
 }
 
-body.light .modal-box{
-background:#fff;
-color:#111;
+.name{
+margin-top:8px;
+font-size:12px;
+opacity:.9;
 }
 
+.hidden{display:none}
 </style>
 </head>
 
 <body>
 
-<button class="toggle" onclick="toggleMode()">mode</button>
-
 <div class="hero">
 <h1>XII TKR 3</h1>
-<p>KELAS GACOR WOKKKKK</p>
+<p>kelas santai tapi gas kalau praktik</p>
 </div>
 
 <div class="wrap">
 
-<div class="stats">
-<div class="card reveal">Siswa<br><b>42</b></div>
-<div class="card reveal">Guru<br><b>1</b></div>
-<div class="card reveal">Prestasi<br><b>Tak Hingga brokk</b></div>
+<input class="search" id="search" onkeyup="cari()" placeholder="cari nama...">
+
+<div class="grid">
+
+<div class="profile" data-name="ADHITYA PUTRA PRAYOGA">
+<div class="avatar">A</div><div class="name">ADHITYA</div>
 </div>
 
-<div class="section reveal">
-<h2>Wali Kelas</h2>
-<div class="teacher">Ibu Tessa Hidayati</div>
+<div class="profile" data-name="AGUNG PRASETYO">
+<div class="avatar">A</div><div class="name">AGUNG</div>
 </div>
 
-<div class="section">
-<h2>Cari Siswa</h2>
-<input class="search" id="search" onkeyup="cari()" placeholder="Cari Nama Siswa/i">
-
-<div class="list">
-
-<div class="item reveal" onclick="openModal('ADHITYA PUTRA PRAYOGA')">ADHITYA PUTRA PRAYOGA</div>
-<div class="item reveal" onclick="openModal('AGUNG PRASETYO')">AGUNG PRASETYO</div>
-<div class="item reveal" onclick="openModal('AHMAD AGUS KURNIANTO')">AHMAD AGUS KURNIANTO</div>
-<div class="item reveal" onclick="openModal('AHMAD MURTANDHO')">AHMAD MURTANDHO</div>
-<div class="item reveal" onclick="openModal('AHMAD RUDI')">AHMAD RUDI</div>
-<div class="item reveal" onclick="openModal('AIEDA APRILIA NADYAH PUSPITASARI')">AIEDA APRILIA NADYAH PUSPITASARI</div>
-<div class="item reveal" onclick="openModal('AJI DWI PRASETYO')">All DWI PRASETYO</div>
-<div class="item reveal" onclick="openModal('ALFIAN FAHRI ANDRIYANTO PRADANA')">ALFIAN FAHRI ANDRIYANTO PRADANA</div>
-<div class="item reveal" onclick="openModal('ARDIANSYAH')">ARDIANSYAH</div>
-<div class="item reveal" onclick="openModal('ARYA MUNTAHIR')">ARYA MUNTAHIR</div>
-<div class="item reveal" onclick="openModal('BAMBANG HARI MUKTI')">BAMBANG HARI MUKTI</div>
-<div class="item reveal" onclick="openModal('DZAKWAN ZULVAKAR')">DZAKWAN ZULVAKAR</div>
-<div class="item reveal" onclick="openModal('HABIB AZWA RAHADIAN')">HABIB AZWA RAHADIAN</div>
-<div class="item reveal" onclick="openModal('HAFIZH SAJIDAH RAMADHAN')">HAFIZH SAJIDAH RAMADHAN</div>
-<div class="item reveal" onclick="openModal('ISBICUS SABDHARIFA')">ISBICUS SABDHARIFA</div>
-<div class="item reveal" onclick="openModal('M.FAISAL ABYU ATHAULOH')">M.FAISAL ABYU ATHAULOH</div>
-<div class="item reveal" onclick="openModal('MOHAMAD ABIZAR ROZAK')">MOHAMAD ABIZAR ROZAK</div>
-<div class="item reveal" onclick="openModal('MUHAMAD MAULANA ARMANSYAH')">MUHAMAD MAULANA ARMANSYAH</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD ALLIF FASHA')">MUHAMMAD ALLIF FASHA</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD DEFA FAKHRIR RIZA')">MUHAMMAD DEFA FAKHRIR RIZA</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD FAREAL JUHANA')">MUHAMMAD FAREAL JUHANA</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD FATTAN SYAFIEQ')">MUHAMMAD FATTAN SYAFIEQ</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD IBNU KHADAFI')">MUHAMMAD IBNU KHADAFI</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD ISNAN AZMI')">MUHAMMAD ISNAN AZMI</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD JIBRIL AL-KAYIST')">MUHAMMAD JIBRIL AL-KAYIST</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD LINGGAR FEBRIANSYAH')">MUHAMMAD LINGGAR FEBRIANSYAH</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD NURUL MUSTOFA')">MUHAMMAD NURUL MUSTOFA</div>
-<div class="item reveal" onclick="openModal('MUHAMMAD RAFFI AR RASYID')">MUHAMMAD RAFFI AR RASYID</div>
-<div class="item reveal" onclick="openModal('NUR FAJAR FEBRIANTO')">NUR FAJAR FEBRIANTO</div>
-<div class="item reveal" onclick="openModal('PAMEO BILAL ABIROKA')">PAMEO BILAL ABIROKA</div>
-<div class="item reveal" onclick="openModal('RAFI ARDHIANSYAH')">RAFI ARDHIANSYAH</div>
-<div class="item reveal" onclick="openModal('RAIHAN ADI FEBRIAN')">RAIHAN ADI FEBRIAN</div>
-<div class="item reveal" onclick="openModal('RAIHAN NURFADILLAH')">RAIHAN NURFADILLAH</div>
-<div class="item reveal" onclick="openModal('REYHAN SYAHWAL NUGROHO')">REYHAN SYAHWAL NUGROHO</div>
-<div class="item reveal" onclick="openModal('RIRIN ZAHRATU SHITA')">RIRIN ZAHRATU SHITA</div>
-<div class="item reveal" onclick="openModal('VIANDRA PRAMUDIKTA')">VIANDRA PRAMUDIKTA</div>
-<div class="item reveal" onclick="openModal('VIKRI IBRAHIMMOVIC')">VIKRI IBRAHIMMOVIC</div>
-<div class="item reveal" onclick="openModal('WISNU BAYU ANDIKA PUTRA')">WISNU BAYU ANDIKA PUTRA</div>
-<div class="item reveal" onclick="openModal('YOGA PERMANA')">YOGA PERMANA</div>
-
-</div>
+<div class="profile" data-name="AHMAD AGUS KURNIANTO">
+<div class="avatar">A</div><div class="name">AHMAD</div>
 </div>
 
+<div class="profile" data-name="AHMAD MURTANDHO">
+<div class="avatar">A</div><div class="name">MURTANDHO</div>
 </div>
 
-<div class="modal" id="modal">
-<div class="modal-box">
-<p id="nama"></p>
-<br>
-<button onclick="closeModal()">close</button>
+<div class="profile" data-name="AHMAD RUDI">
+<div class="avatar">A</div><div class="name">RUDI</div>
+</div>
+
+<div class="profile" data-name="AIEDA APRILIA NADYAH PUSPITASARI">
+<div class="avatar">A</div><div class="name">AIEDA</div>
+</div>
+
+<div class="profile" data-name="AJI DWI PRASETYO">
+<div class="avatar">A</div><div class="name">AJI</div>
+</div>
+
+<div class="profile" data-name="ALFIAN FAHRI ANDRIYANTO PRADANA">
+<div class="avatar">A</div><div class="name">ALFIAN</div>
+</div>
+
+<div class="profile" data-name="ARDIANSYAH">
+<div class="avatar">A</div><div class="name">ARDIANSYAH</div>
+</div>
+
+<div class="profile" data-name="ARYA MUNTAHIR">
+<div class="avatar">A</div><div class="name">ARYA</div>
+</div>
+
+<div class="profile" data-name="BAMBANG HARI MUKTI">
+<div class="avatar">B</div><div class="name">BAMBANG</div>
+</div>
+
+<div class="profile" data-name="DZAKWAN ZULVAKAR">
+<div class="avatar">D</div><div class="name">DZAKWAN</div>
+</div>
+
+<div class="profile" data-name="HABIB AZWA RAHADIAN">
+<div class="avatar">H</div><div class="name">HABIB</div>
+</div>
+
+<div class="profile" data-name="HAFIZH SAJIDAH RAMADHAN">
+<div class="avatar">H</div><div class="name">HAFIZH</div>
+</div>
+
+<div class="profile" data-name="MUHAMMAD FAREAL JUHANA">
+<div class="avatar">M</div><div class="name">FAREAL</div>
+</div>
+
+<div class="profile" data-name="MUHAMMAD FATTAN SYAFIEQ">
+<div class="avatar">M</div><div class="name">FATTAN</div>
+</div>
+
+<div class="profile" data-name="MUHAMMAD RAFFI AR RASYID">
+<div class="avatar">M</div><div class="name">RAFFI</div>
+</div>
+
+<div class="profile" data-name="YOGA PERMANA">
+<div class="avatar">Y</div><div class="name">YOGA</div>
+</div>
+
 </div>
 </div>
 
 <script>
 function cari(){
-let input=document.getElementById("search").value.toLowerCase();
-document.querySelectorAll(".item").forEach(i=>{
-i.style.display=i.innerText.toLowerCase().includes(input)?"block":"none";
+let val=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".profile").forEach(p=>{
+let name=p.getAttribute("data-name").toLowerCase();
+p.style.display=name.includes(val)?"block":"none";
 });
-}
-
-function reveal(){
-document.querySelectorAll(".reveal").forEach(el=>{
-let top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-80){
-el.classList.add("active");
-}
-});
-}
-
-window.addEventListener("scroll",reveal);
-reveal();
-
-function openModal(nama){
-document.getElementById("modal").style.display="flex";
-document.getElementById("nama").innerText=nama;
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-
-function toggleMode(){
-document.body.classList.toggle("light");
 }
 </script>
 
